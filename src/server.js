@@ -7,23 +7,23 @@ import {
 import accomodationsRouter from "./services/accomodations/index.js"
 import cors from "cors";
 import express from "express";
-import facebookStrategy from './auth/oauth.js'
+// import facebookStrategy from './auth/oauth.js'
 import listEndpoints from "express-list-endpoints";
 import mongoose from "mongoose";
-import passport from 'passport'
+// import passport from 'passport'
 import usersRouter from "./services/users/index.js"
 
 console.time("Server startup");
 const server = express();
 const port = process.env.PORT || 3069;
 
-passport.use('facebook', facebookStrategy)
+// passport.use('facebook', facebookStrategy)
 
 // ><><><><: MIDDLEWARES :><><><>< \\
 
 server.use(express.json());
 server.use(cors());
-server.use(passport.initialize())
+// server.use(passport.initialize())
 
 // ><><><><: ROUTES :><><><>< \\
 
