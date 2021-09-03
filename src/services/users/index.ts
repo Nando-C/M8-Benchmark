@@ -5,6 +5,7 @@ import User from "./schema.js";
 import createError from "http-errors";
 import express from "express";
 import getUser from "./schema.js";
+import { IUser } from '../../typings'
 
 const usersRouter = express.Router();
 

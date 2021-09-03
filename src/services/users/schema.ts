@@ -1,9 +1,10 @@
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
+import { UserDocument, UserModel } from "../../typings"
 
 const { Schema, model } = mongoose;
 
-const UsersSchema = new Schema(
+const UsersSchema = new Schema<UserDocument>(
 	{
 		name: { type: String, required: true, default: "User" },
 		surname: { type: String, required: true, default: "Surname" },
@@ -31,7 +32,7 @@ UsersSchema.pre("save", async function (next) {
 UsersSchema.methods.toJSON = function () {
 	const userDocument = this;
 	const userObject = userDocument.toObject();
-	delete userObject.password;
+	// delete userObject.password;
 	delete userObject.__v;
 	return userObject;
 };
@@ -56,4 +57,4 @@ UsersSchema.static("getUser", async function (id) {
 	return user;
 });
 
-export default new model("User", UsersSchema);
+export default model<UserDocument, UserModel>("User", UsersSchema);

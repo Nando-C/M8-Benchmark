@@ -1,5 +1,6 @@
 import User from "../users/schema.js";
 import mongoose from "mongoose";
+import { IUser } from "../../typings"
 
 const { Schema, model } = mongoose;
 

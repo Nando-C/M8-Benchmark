@@ -2,19 +2,20 @@ import {
 	badRequestErrorHandler,
 	catchAllErrorHandler,
 	notFoundErrorHandler,
-} from "./errorHandlers.js";
+} from "./errorHandlers";
 
-import accomodationsRouter from "./services/accomodations/index.js"
+import accomodationsRouter from "./services/accomodations/index"
 import cors from "cors";
 import express from "express";
 // import facebookStrategy from './auth/oauth.js'
 import listEndpoints from "express-list-endpoints";
 import mongoose from "mongoose";
 // import passport from 'passport'
-import usersRouter from "./services/users/index.js"
+import usersRouter from "./services/users/index"
 
 console.time("Server startup");
 const server = express();
+// process.env.TS_NODE_DEV && require("dotenv").config()
 const port = process.env.PORT || 3069;
 
 // passport.use('facebook', facebookStrategy)
@@ -39,7 +40,8 @@ server.use(catchAllErrorHandler);
 
 // ><><><><: MONGO TIME :><><><>< \\
 
-mongoose.connect(process.env.MONGO_CONNECTION, {
+
+mongoose.connect(process.env.MONGO_CONNECTION as string, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false,
